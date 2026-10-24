@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.klee.system.mapper.BlogVisitLogMapper">
+
+    <!-- 日志分页列表 -->
+    <select id="getLogPage" resultType="com.klee.system.model.vo.BlogVisitLogVO">
+        SELECT
+            t1.id,
+            t1.ip_address,
+            t1.visit_info,
+            t1.visit_date,
+            t1.create_time
+        FROM
+            blog_visit_log t1
+        <where>
+            <if test="queryParams.keywords != null and queryParams.keywords != '' ">
+               AND t1.ip_address like LIKE CONCAT('%', #{queryParams.keywords}, '%')
+            </if>
+            <if test="queryParams.createTime != null and queryParams.createTime.size > 0">
+                <if test="queryParams.createTime[0] != null and queryParams.createTime[0] != ''">
+                    <bind name="startDate" value="queryParams.createTime[0].length() == 10 ? queryParams.createTime[0] + ' 00:00:00' : queryParams.createTime[0]"/>
+                    AND t1.create_time &gt;= #{startDate}
+                </if>
+                <if test="queryParams.createTime[1] != null and queryParams.createTime[1] != ''">
+                    <bind name="endDate" value="queryParams.createTime[1].length() == 10 ? queryParams.createTime[1] + ' 23:59:59' : queryParams.createTime[1]"/>
+                    AND t1.create_time &lt;= #{endDate}
+                </if>
+            </if>
+        </where>
+        ORDER BY
+            t1.create_time DESC
+    </select>
+
+
+</mapper>

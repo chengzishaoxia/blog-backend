@@ -1,0 +1,15 @@
+${AnsiColor.BRIGHT_MAGENTA}
+   ╭───────────────────────────────────╮
+   │          ☆ 原 神 启 动 ☆           │
+   ╰───────────────────────────────────╯
+            ／)  /)   .-'''-.
+      _    ( ˃꒳˂ )  /  o o  \\
+   ┏(\\＼   /づづ  /  (≥_≤ )  |   ☆
+   ┗(⌒)⌒)─────────┘  ──── ──┘
+   ✿✿✿✿✿✿✿✿✿✿✿✿✿✿✿✿✿✿✿✿✿✿✿✿✿
+${AnsiColor.BRIGHT_YELLOW}
+   ✧ 轻 量 · 元 气 · 萌 系 · 启 动 中 ✧
+${AnsiColor.BRIGHT_CYAN}
+Project Version      : ${project.version}
+Spring Boot Version  : ${spring-boot.version}${spring-boot.formatted-version}
+${AnsiColor.BRIGHT_YELLOW}
